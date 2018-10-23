@@ -17,11 +17,29 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.glyphicon-warning-sign:before {
+  font-family: "Glyphicons Halflings"
+  ;
+  
+  content: "\e107";
+}
+.contents {
+  margin: 10px 50px;
+}
 .App-link {
   color: #61dafb;
 }
 
+.modal-backdrop-override {
+  background-color: grey ! important;
+  opacity: 0.6;
+}
+.help-block.error {
+  color: red;
+}
+.modal-dialog {
+  margin: 65px auto !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
