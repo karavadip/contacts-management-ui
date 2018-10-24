@@ -3,10 +3,9 @@ import {
     Button,
     Modal
  } from 'react-bootstrap';
- import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 import PropTypes from 'prop-types';
 
-export default class ConfirmModal extends React.Component {
+export default class ConfirmModal extends Component {
     constructor(props) {
         super(props);
         this.handleOnConfirm = this.handleOnConfirm.bind(this);
@@ -24,7 +23,6 @@ export default class ConfirmModal extends React.Component {
                 <Modal.Dialog>
                     <Modal.Header>
                         <Modal.Title>
-                        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                             {title}
                         </Modal.Title>
                     </Modal.Header>

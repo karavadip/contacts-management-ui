@@ -4,8 +4,9 @@ import {
     Table
  } from 'react-bootstrap';
  import ConfirmModal from './confirm-modal';
-import PropTypes from 'prop-types';
 import AddCustomer from './add-customer';
+import AppService from '../services/appService';
+import Login from './login';
 
 class CustomerList extends Component {
     constructor(props){
@@ -15,6 +16,7 @@ class CustomerList extends Component {
         this.handleDeleteCustomer = this.handleDeleteCustomer.bind(this);
         this.handleOnConfirmDelete = this.handleOnConfirmDelete.bind(this);
         this.handleCancelDelete = this.handleCancelDelete.bind(this);
+        this.appService = new AppService();        
     }
     state = {
         showAddCustomer: false,
@@ -97,7 +99,9 @@ class CustomerList extends Component {
         };
         
         return (
+           
             <div className="customer-list">
+             <Login/>
                 <Button
                     bsStyle="primary"
                     bsSize="large"

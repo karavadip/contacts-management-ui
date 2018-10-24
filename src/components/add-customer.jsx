@@ -24,7 +24,14 @@ export default class AddCustomer extends Component {
             email: '',
             address: ''
         };
+        this.handleAddCustomer = this.handleAddCustomer.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+
+        this.handleOnFirstNameChange = this.handleOnFirstNameChange.bind(this);   
+        this.handleOnLastNameChange = this.handleOnLastNameChange.bind(this);     
+        this.handleOnPhoneChange = this.handleOnPhoneChange.bind(this);
+        this.handleOnAddressChange = this.handleOnAddressChange.bind(this);
+        this.handleOnEmailChange = this.handleOnEmailChange.bind(this);
     }
     
     componentDidMount() {
@@ -84,7 +91,6 @@ export default class AddCustomer extends Component {
                 isEmpty = fname.length < 1 || lname.length < 1;
                 break;        
         }
-        console.log(fieldName, ': is name empty:', isEmpty, ' fname-lnsame : ', fname,lname);
         return !!isEmpty;
     }
 
@@ -114,7 +120,7 @@ export default class AddCustomer extends Component {
                                     type="text"
                                     required={true}
                                     value={fname}
-                                    onChange={this.handleOnFirstNameChange.bind(this)} />
+                                    onChange={this.handleOnFirstNameChange} />
                                 {this.nameIsEmpty('fname') && <HelpBlock className={validationStateClass}>Customer's first name is required</HelpBlock>}
                             </FormGroup>
                         </Col>
@@ -126,7 +132,7 @@ export default class AddCustomer extends Component {
                                     type="text"
                                     required={true}
                                     value={lname}
-                                    onChange={this.handleOnLastNameChange.bind(this)} />
+                                    onChange={this.handleOnLastNameChange} />
                                 {this.nameIsEmpty('lname') && <HelpBlock className={validationStateClass}>Customer's last name is required</HelpBlock>}
                             </FormGroup>
                         </Col>
@@ -139,7 +145,7 @@ export default class AddCustomer extends Component {
                                     id="address"
                                     type="text"
                                     value={address}
-                                    onChange={this.handleOnAddressChange.bind(this)} />
+                                    onChange={this.handleOnAddressChange} />
                             </FormGroup>
                         </Col>
                     </Row>   
@@ -151,7 +157,7 @@ export default class AddCustomer extends Component {
                                     id="phone"
                                     type="tel"
                                     value={phone}
-                                    onChange={this.handleOnPhoneChange.bind(this)} />
+                                    onChange={this.handleOnPhoneChange} />
                             </FormGroup>
                         </Col>
                         <Col sm={6}>
@@ -161,14 +167,14 @@ export default class AddCustomer extends Component {
                                     id="email"
                                     type="email"
                                     value={email}
-                                    onChange={this.handleOnEmailChange.bind(this)} />
+                                    onChange={this.handleOnEmailChange} />
                             </FormGroup>
                         </Col>
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
-                        <Button onClick={this.handleOnClose.bind(this)}>Close</Button>
-                        <Button onClick={this.handleAddCustomer.bind(this)} bsStyle="primary" disabled={this.nameIsEmpty()} >{customerDetails? 'Update' : 'Save'}</Button>
+                        <Button onClick={this.handleOnClose}>Close</Button>
+                        <Button onClick={this.handleAddCustomer} bsStyle="primary" disabled={this.nameIsEmpty()} >{customerDetails? 'Update' : 'Save'}</Button>
                 </Modal.Footer>
             </Modal>
             </form>
