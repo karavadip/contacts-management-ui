@@ -8,7 +8,6 @@ import {
     Col,
     Alert
  } from 'react-bootstrap';
- import ConfirmModal from './confirm-modal';
 import AddCustomer from './add-customer';
 import AppService from '../services/appService';
 import PropTypes from 'prop-types';
@@ -50,8 +49,7 @@ export default class Login extends Component {
     render() {
         const { showAlert, loginId, password } = this.state;
         return (
-            <div className="login">
-                <h4> Login Module </h4>
+           <div className={this.props.show ? 'd-block' : 'd-none'}>                
                 {showAlert && <Alert bsStyle="danger">
                     <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
                     good.
@@ -88,13 +86,12 @@ export default class Login extends Component {
                             onClick={this.handleOnSubmit}
                             disabled={loginId.length < 1 || password.length < 1}>Submit</Button>
                 </div>
-                
-                
             </div>
         );
     }
 }
 
 AddCustomer.propTypes = {
-    onUserValidation: PropTypes.func.isRequired
+    onUserValidation: PropTypes.func.isRequired,
+    show: PropTypes.bool
 };

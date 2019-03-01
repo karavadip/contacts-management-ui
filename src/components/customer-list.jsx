@@ -6,7 +6,7 @@ import {
  import ConfirmModal from './confirm-modal';
 import AddCustomer from './add-customer';
 import AppService from '../services/appService';
-import Login from './login';
+import PropTypes from 'prop-types';
 
 class CustomerList extends Component {
     constructor(props){
@@ -65,9 +65,7 @@ class CustomerList extends Component {
             showAddCustomer: true});
     }
 
-    handleDeleteCustomer = (e) => {
-        console.log('Delete the details of the row', this.state.customerList[e.target.value]);
-
+    handleDeleteCustomer = (e) => {       
         this.setState({showDeleteConfirm: true, deleteCustomer: this.state.customerList[e.target.value]});
     }
     handleOnConfirmDelete = (e) => {
@@ -100,9 +98,10 @@ class CustomerList extends Component {
         
         return (
            
-            <div className="customer-list">
-             <Login/>
+            <div className={this.props.show ? 'd-block' : 'd-none'}>
+             
                 <Button
+                    id="addCustomer"
                     bsStyle="primary"
                     bsSize="large"
                     onClick={this.handleAddCustomer}>
@@ -139,8 +138,8 @@ class CustomerList extends Component {
                             <td>{row.address}</td>
                             <td>{row.phone}</td>
                             <td><a href={row.email}>{row.email}</a></td>
-                            <td><Button key={row.id} bsStyle="link" onClick={this.handleEditCustomer} value={index}>Edit</Button></td>
-                            <td><Button key={row.id} bsStyle="link" onClick={this.handleDeleteCustomer} value={index}>Delete</Button></td>
+                            <td><Button className="editCustomer" key={row.id} bsStyle="link" onClick={this.handleEditCustomer} value={index}>Edit</Button></td>
+                            <td><Button className="deleteCustomer" key={row.id} bsStyle="link" onClick={this.handleDeleteCustomer} value={index}>Delete</Button></td>
                         </tr>))}
                     </tbody>
                 </Table>
@@ -149,4 +148,7 @@ class CustomerList extends Component {
     }
 }
 export default CustomerList;
+CustomerList.protoTypes = {
+    show: PropTypes.bool
+}
 

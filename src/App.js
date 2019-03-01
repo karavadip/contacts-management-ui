@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  PageHeader
+  PageHeader,
+  Button
 } from 'react-bootstrap';
 import './App.css';
 import CustomerList from './components/customer-list';
@@ -9,25 +10,26 @@ import Login from './components/login';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {isValidUser: false}
+    this.state = {showCustomerList: false}
     
   }
-  onUserValidation = (isValidUser) => {
-    this.setState({ isValidUser: isValidUser});
+  onUserValidation = (isValidUser) => {this.setState({ showCustomerList: isValidUser});}
+
+  handleOnLogOut =() => {
+    this.setState({ showCustomerList: false});
   }
+  
   render() {
-    const { isValidUser } = this.state;
+    const { showCustomerList } = this.state;
     return (
       <div>
         <PageHeader align="center">
-          Plano Accountants Address Book
+          Plano Accountants Address Book         
         </PageHeader>
         <div className="contents">
-          {
-            (isValidUser === false) && 
-            <Login onUserValidation={this.onUserValidation} />
-          }
-          {isValidUser && <CustomerList/>}
+          <Button className={showCustomerList? 'd-block float-right': 'd-none'} bsStyle="danger" onClick={this.handleOnLogOut.bind(this)} >Log out</Button>
+          <Login onUserValidation={this.onUserValidation} show={!showCustomerList} />         
+          <CustomerList show={showCustomerList}/>
         </div>
       </div>
     );

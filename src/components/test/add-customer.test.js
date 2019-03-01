@@ -1,7 +1,6 @@
 import React from 'react';
 import{expect} from 'chai';
-import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import AddCustomer from '../add-customer';
 
@@ -23,7 +22,7 @@ describe('Add customer with details', () => {
   }
     it('renders without crashing', () => {
         const component = shallowRenderer();
-        expect(component).to.not.be.undefined;
+        expect(component).to.not.equal(undefined);
       });
      describe('handler functions', () => {
        it('on first name change', () => {          

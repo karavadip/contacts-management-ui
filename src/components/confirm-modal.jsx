@@ -26,9 +26,7 @@ export default class ConfirmModal extends Component {
                             {title}
                         </Modal.Title>
                     </Modal.Header>
-
                     <Modal.Body>{body}</Modal.Body>
-
                     <Modal.Footer>
                         <Button onClick={onCancel}>{cancelButtonText}</Button>
                         <Button bsStyle="primary" onClick={this.handleOnConfirm}>{confirmButtonText}</Button>

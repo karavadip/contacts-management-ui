@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
     Modal,
@@ -11,8 +12,9 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import '../App.css';
+import { addCustomer } from '../actions/creators';
 
-export default class AddCustomer extends Component {
+export  class AddCustomer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -60,7 +62,8 @@ export default class AddCustomer extends Component {
             phone,
             email
         }
-        this.props.onSave(customerDetails);
+        this.props.addCustomer(customerDetails);
+        //this.props.onSave(customerDetails);
     };
 
 
@@ -188,4 +191,14 @@ AddCustomer.propTypes = {
     isVisible: PropTypes.bool,
     customerDetails: PropTypes.object
 };
+// const mapStateToProps = state => ({
+//     isTaxReturnsDataReady: getIsTaxReturnsDataReady(state)
+// });
+
+const mapDispatchToProps = {
+   addCustomer
+};
+
+export default connect({}, mapDispatchToProps)(AddCustomer);
+
 
